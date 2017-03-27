@@ -1,3 +1,24 @@
-<h1>
-  {{title}}
-</h1>
+<div class="navbar-fixed">
+  <ul id="user-dropdown" class="dropdown-content">
+    <li><a (click)="logout()">Logout</a></li>
+  </ul>
+
+  <nav>
+    <div class="nav-wrapper teal darken-1">
+      <a href="#" class="brand-logo">App Bellissima</a>
+      <ul class="right" [hidden]="isLoggedIn">
+        <li><a routerLink="/login">Login</a></li>
+      </ul>
+      <ul class="right" [hidden]="!isLoggedIn">
+        <li><a materialize="dropdown" data-beloworigin="true" class="dropdown-button"
+               data-activates="user-dropdown">
+          {{user ? user.username : 'not signed in'}}
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
