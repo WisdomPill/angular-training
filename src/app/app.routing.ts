@@ -5,6 +5,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./services/authguard.service";
 import {AlreadyAuthGuard} from "app/services/alreadyauthguard.service";
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 const appRoutes = [
   {
@@ -19,6 +20,11 @@ const appRoutes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AlreadyAuthGuard]
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent,
     canActivate: [AlreadyAuthGuard]
   },
   {

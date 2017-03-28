@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 
 import {MaterializeModule} from "angular2-materialize";
@@ -14,6 +14,8 @@ import {UserService} from "./services/user.service";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./services/authguard.service";
 import {AlreadyAuthGuard} from "./services/alreadyauthguard.service";
+import {TruncatePipe} from "./pipes/truncate.pipe";
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 @NgModule({
   declarations: [
@@ -21,11 +23,14 @@ import {AlreadyAuthGuard} from "./services/alreadyauthguard.service";
     HomePageComponent,
     PageNotFoundComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    TruncatePipe,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MaterializeModule,
     routes

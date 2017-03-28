@@ -17,7 +17,7 @@
           <div class="col s12" *ngIf="loginResult.status === 'ko'">
             <div class="card-panel red darken-4 center-align">
               <span class="white-text">
-                Username o password errati!
+                Wrong username or password!
               </span>
             </div>
           </div>
@@ -25,6 +25,9 @@
             <button type="submit" class="waves-effect waves-light btn-large">
               Login
             </button>
+          </div>
+          <div id="registration-link-container" class="col s12 center">
+            <a routerLink="/register">You don't have an account yet? Register here</a>
           </div>
         </div>
       </form>
