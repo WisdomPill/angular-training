@@ -6,6 +6,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./services/authguard.service";
 import {AlreadyAuthGuard} from "app/services/alreadyauthguard.service";
 import {RegistrationComponent} from "./components/registration/registration.component";
+import {PostComponent} from "./components/post/post.component";
+import {PostListComponent} from "./components/postlist/postlist.component";
 
 const appRoutes = [
   {
@@ -30,7 +32,17 @@ const appRoutes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component:  PostListComponent
+      },
+      {
+        path: ':id',
+        component:  PostComponent
+      }
+    ]
   },
   {
     path: '**',

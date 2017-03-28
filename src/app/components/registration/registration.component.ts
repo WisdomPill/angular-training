@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {validateEmail} from "../../validators/email.validator";
 
 @Component({
   selector: 'app-registration',
@@ -9,15 +10,20 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
+  constructor(private formBuilder: FormBuilder) {
+  }
+
   ngOnInit(): void {
-    this.registrationForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      repeatPassword: new FormControl('', [Validators.required]),
-      privacyTerms: new FormControl('', [Validators.requiredTrue])
+    this.registrationForm = this.formBuilder.group({
+      name: ["", [Validators.required]],
+      lastName: ["", [Validators.required]],
+      email: ["", [Validators.required, validateEmail]],
+      phone: ["", [Validators.required]],
+      passwords: this.formBuilder.group({
+        password: ["", [Validators.required]],
+        repeatPassword: ["", [Validators.required]]
+      }),
+      privacyTerms: [false, [Validators.requiredTrue]]
     });
   }
 

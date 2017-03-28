@@ -16,6 +16,9 @@ import {AuthGuard} from "./services/authguard.service";
 import {AlreadyAuthGuard} from "./services/alreadyauthguard.service";
 import {TruncatePipe} from "./pipes/truncate.pipe";
 import {RegistrationComponent} from "./components/registration/registration.component";
+import {PostListComponent} from "./components/postlist/postlist.component";
+import {PostComponent} from "./components/post/post.component";
+import {PostService} from "./services/post.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import {RegistrationComponent} from "./components/registration/registration.comp
     LoginComponent,
     DashboardComponent,
     TruncatePipe,
-    RegistrationComponent
+    RegistrationComponent,
+    PostListComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import {RegistrationComponent} from "./components/registration/registration.comp
   providers: [
     UserService,
     AuthGuard,
-    AlreadyAuthGuard
+    AlreadyAuthGuard,
+    PostService
   ],
   bootstrap: [AppComponent]
 })

@@ -10,10 +10,15 @@
         <li><a routerLink="/login">Login</a></li>
       </ul>
       <ul class="right" [hidden]="!isLoggedIn">
-        <li><a materialize="dropdown" data-beloworigin="true" class="dropdown-button"
-               data-activates="user-dropdown">
-          {{user ? user.username : 'not signed in'}}
-        </a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li>
+          <a materialize="dropdown" data-beloworigin="true" class="dropdown-button"
+             data-activates="user-dropdown">
+            {{user ? user.username : 'not signed in'}}
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
